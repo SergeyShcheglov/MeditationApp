@@ -61,8 +61,44 @@ struct PlayerView: View {
                     .font(.caption)
                     .foregroundColor(.white)
                 }
+                
+                //MARK: - Playback Controls
+                HStack {
+                    //MARK: - Repeat Button
+                    PlaybackControlButton(systemName: "repeat") {
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    //MARK: - Backward Button
+                    PlaybackControlButton(systemName: "gobackward.10") {
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    //MARK: - Play/Pause Button
+                    PlaybackControlButton(systemName: "play.circle.fill", fontSize: 44) {
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    //MARK: - Forward Button
+                    PlaybackControlButton(systemName: "goforward.10") {
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    //MARK: - Stop Button
+                    PlaybackControlButton(systemName: "stop.fill") {
+                        
+                    }
+                }
             }
-            .padding(20)
+            .padding(14)
         }
     }
 }
