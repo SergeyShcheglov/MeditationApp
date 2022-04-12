@@ -11,7 +11,7 @@ struct MeditationView: View {
     var body: some View {
         VStack(spacing: 0) {
             //MARK: - Image
-            Image("MeditationApp")
+            Image("image-ripple")
                 .resizable()
                 .scaledToFill()
                 .frame(height: UIScreen.main.bounds.height / 3)
