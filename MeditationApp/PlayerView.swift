@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct PlayerView: View {
     var meditationVM: MeditationViewModel
@@ -101,6 +102,9 @@ struct PlayerView: View {
                 }
             }
             .padding(14)
+        }
+        .onAppear {
+            AudioManager.shared.startPlayer(track: meditationVM.meditation.track)
         }
     }
 }
