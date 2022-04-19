@@ -11,6 +11,10 @@ import AVFAudio
 struct PlayerView: View {
     @EnvironmentObject var audioManager: AudioManager
     
+    let timer = Timer
+        .publish(every: 0.5, on: .main, in: .common)
+        .autoconnect()
+    
     var meditationVM: MeditationViewModel
     var isPreview: Bool = false
     @State private var value: Double = 0.0
@@ -110,6 +114,10 @@ struct PlayerView: View {
 //            AudioManager.shared.startPlayer(track: meditationVM.meditation.track, isPreview: isPreview)
            audioManager.startPlayer(track: meditationVM.meditation.track, isPreview: isPreview)
         }
+        .onReceive(timer) { _ in
+            guard let player = audioManager.player else { return }
+            value = player.currentTime
+        }
     }
 }
 
@@ -118,5 +126,6 @@ struct PlayerView_Previews: PreviewProvider {
 
     static var previews: some View {
         PlayerView(meditationVM: meditationVM, isPreview: true)
+            .environmentObject(AudioManager())
     }
 }
